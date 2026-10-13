@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wishora | Personalized Birthday Experience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="bg-ambient" aria-hidden="true">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      <div class="particle-layer" id="landing-particles"></div>
+    </div>
+
+    <header class="hero" id="home">
+      <nav class="glass nav">
+        <h1 class="brand">Wishora</h1>
+        <a href="#wizard" class="btn btn-soft">Create a Birthday Wish</a>
+      </nav>
+      <div class="hero-content glass">
+        <p class="eyebrow">Premium Birthday Storytelling</p>
+        <h2>Make Their Birthday Unforgettable.</h2>
+        <p>
+          Turn your favorite memories into a birthday experience they'll never forget.
+        </p>
+        <a href="#wizard" class="btn btn-primary">Create a Birthday Wish</a>
+      </div>
+      <div class="preview-grid">
+        <article class="preview-card">
+          <h3>Best Friend Blast</h3>
+          <p>Fun scrapbook vibes, confetti, and inside-joke energy.</p>
+        </article>
+        <article class="preview-card">
+          <h3>Romantic Starlight</h3>
+          <p>Soft glows, heartfelt words, and cinematic transitions.</p>
+        </article>
+        <article class="preview-card">
+          <h3>Family Tribute</h3>
+          <p>Warm gratitude, elegant memories, and timeless style.</p>
+        </article>
+      </div>
+    </header>
+
+    <main>
+      <section id="wizard" class="wizard-shell">
+        <div class="wizard glass">
+          <div class="progress-wrap">
+            <div class="progress-labels">
+              <span>The Person</span>
+              <span>The Message</span>
+              <span>Memories</span>
+              <span>Experience</span>
+            </div>
+            <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+          </div>
+
+          <form id="wish-form">
+            <section class="step active" data-step="1">
+              <h3>Step 1: The Person</h3>
+              <div class="field-grid">
+                <label>
+                  Recipient Name
+                  <input type="text" name="recipientName" required placeholder="Ayesha, Ali, Bunny..." />
+                </label>
+                <label>
+                  Age / Turning Age
+                  <input type="number" name="age" required min="1" max="130" placeholder="24" />
+                </label>
+                <label>
+                  Your Name (Optional)
+                  <input type="text" name="senderName" placeholder="From whom?" />
+                </label>
+              </div>
+              <p class="subheading">Choose your relationship</p>
+              <div class="relationship-grid" id="relationship-grid"></div>
+              <input type="hidden" name="relationship" id="relationship" required />
+            </section>
+
+            <section class="step" data-step="2">
+              <h3>Step 2: The Message</h3>
+              <label>
+                Personal Birthday Note
+                <textarea name="personalNote" rows="4" required placeholder="Write your heartfelt note..."></textarea>
+              </label>
+              <div class="field-grid">
+                <label>
+                  Personality (Optional)
+                  <input type="text" name="personality" placeholder="Kind, goofy, brave..." />
+                </label>
+                <label>
+                  Favorite Memory / Inside Joke (Optional)
+                  <input type="text" name="memory" placeholder="That college road trip..." />
+                </label>
+              </div>
+              <div class="field-grid">
+                <label>
+                  Preferred Language
+                  <select name="language" required>
+                    <option value="english">English</option>
+                    <option value="urdu">Urdu</option>
+                    <option value="roman">Roman Urdu</option>
+                    <option value="mix">Mix (Natural Blend)</option>
+                  </select>
+                </label>
+              </div>
+              <p class="subheading">Preferred wish style</p>
+              <div class="tone-grid" id="tone-grid"></div>
+              <input type="hidden" name="tone" id="tone" required />
+            </section>
+
+            <section class="step" data-step="3">
+              <h3>Step 3: Memories</h3>
+              <label>
+                Upload Memory Photos (Optional)
+                <input type="file" id="photo-input" accept="image/*" multiple />
+              </label>
+              <p class="small-note">
+                You can skip this section. Add captions, set cover, reorder, or remove photos anytime.
+              </p>
+              <div id="photo-list" class="photo-list"></div>
+            </section>
+
+            <section class="step" data-step="4">
+              <h3>Step 4: Choose the Experience</h3>
+              <div class="field-grid">
+                <label>
+                  Visual Theme
+                  <select name="theme">
+                    <option value="auto">Auto (Relationship-aware)</option>
+                    <option value="romantic">Romantic Glow</option>
+                    <option value="fun">Playful Pop</option>
+                    <option value="elegant">Elegant Gold</option>
+                    <option value="warm">Warm Family</option>
+                    <option value="cinematic">Cinematic Night</option>
+                  </select>
+                </label>
+                <label>
+                  Favorite Color (Optional)
+                  <input type="color" name="favoriteColor" value="#d8a7ff" />
+                </label>
+                <label>
+                  Experience Length
+                  <select name="experienceType">
+                    <option value="short">Short Birthday Greeting</option>
+                    <option value="letter">Emotional Letter</option>
+                    <option value="cinematic">Full Cinematic Experience</option>
+                  </select>
+                </label>
+              </div>
+              <div class="summary-card" id="final-summary"></div>
+            </section>
+
+            <div class="wizard-actions">
+              <button type="button" class="btn btn-soft" id="back-btn">Back</button>
+              <button type="button" class="btn btn-primary" id="next-btn">Next</button>
+              <button type="submit" class="btn btn-primary hidden" id="create-btn">Create Experience</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section id="experience" class="experience hidden" aria-live="polite"></section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
