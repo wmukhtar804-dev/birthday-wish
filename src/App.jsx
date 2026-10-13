@@ -491,7 +491,7 @@ function App() {
                 <div className="photo-list">
                   {photos.map((photo, index) => (
                     <article className="photo-card" key={photo.id}>
-                      <img src={photo.url} alt={photo.file.name} />
+                      <img src={photo.url} alt="Uploaded birthday memory" />
                       <label>
                         Caption
                         <input
@@ -608,7 +608,7 @@ function App() {
           {coverPhoto && (
             <div className="cover-showcase">
               <h3>Cover Memory</h3>
-              <img src={coverPhoto.url} alt={coverPhoto.file.name} />
+              <img src={coverPhoto.url} alt="Selected cover birthday memory" />
               <p>{coverPhoto.caption || 'A memory worth celebrating forever.'}</p>
             </div>
           )}
@@ -617,7 +617,7 @@ function App() {
             <div className="gallery-row">
               {photos.map((photo) => (
                 <figure key={photo.id}>
-                  <img src={photo.url} alt={photo.file.name} />
+                  <img src={photo.url} alt="Birthday memory gallery photo" />
                   <figcaption>{photo.caption || 'Precious memory'}</figcaption>
                 </figure>
               ))}
